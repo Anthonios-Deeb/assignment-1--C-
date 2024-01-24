@@ -28,6 +28,7 @@ int isArmstrong(int num){
         }
 
         sum=temp2+sum;
+        temp=temp/10;
     }
 
     return num==sum;

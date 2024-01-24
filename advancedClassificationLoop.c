@@ -1,4 +1,5 @@
 #include "NumClass.h"
+int countDigits(int);
 
 int isPalindrome(int num){
     int temp = num;
@@ -23,10 +24,10 @@ int isArmstrong(int num){
         temp2=temp%10;
 
         for(int i=0;i<count;i++){
-            temp2*=temp2;
+            temp2=temp2*temp2;
         }
 
-        sum+=temp2;
+        sum=temp2+sum;
     }
 
     return num==sum;

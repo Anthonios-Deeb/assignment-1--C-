@@ -1,6 +1,14 @@
 #include "NumClass.h"
+int isPalindromeHelper(int,int,int);
+int countDigits(int);
+int isArmstrongHelper(int,int);
 
-int isPalindrome(int num, int ogNum, int revNum) {
+int isPalindrome(int num){
+    int ogNum=num;
+    return isPalindromeHelper(num,ogNum,0);
+}
+
+int isPalindromeHelper(int num, int ogNum, int revNum) {
     if (num == 0) {
         return ogNum == revNum;
     }
@@ -8,27 +16,32 @@ int isPalindrome(int num, int ogNum, int revNum) {
 
     revNum = revNum * 10 + temp;
 
-    return isPalindrome(num / 10, ogNum, revNum);
+    return isPalindromeHelper(num / 10, ogNum, revNum);
 }
 
-int factorial(int n) {
-    if (n == 0 || n == 1) {
-        return 1;
+int isArmstrong(int num){
+    int c=countDigits(num);
+    return num==isArmstrongHelper(num,c);
+}
+
+int countDigits(int num) {
+    if (num == 0) {
+        return 0;
     } else {
-        return n * factorial(n - 1);
+        return 1 + countDigits(num / 10);
     }
 }
 
-int isStrong(int num) {
-    return revNum(num,0,0);
-}
+int isArmstrongHelper(int num, int n) {
+    if (num == 0) {
+        return 0;
+    } else {
+        int digit = num % 10;
+        int result =1;
+        for (int i = 0; i < n; ++i) {
+            result*=digit;
+        }
 
-int revNum(int ogNum,int temp,int sum){
-    if(temp==0){
-        return ogNum==sum;
+        return result+isArmstrongHelper(num/10,n);
     }
-    sum=(temp%10)+sum*10;
-    temp = temp/10;
-    
-   return revNum(ogNum,temp,sum);
 }

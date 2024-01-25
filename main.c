@@ -2,9 +2,7 @@
 #include "NumClass.h"
 int main(){
     int x,y;
-    printf("enter a number for x:");
     scanf("%d",&x);
-    printf("enter a number for y:");
     scanf("%d",&y);
 
     printf("The Armstrong numbers are:");
